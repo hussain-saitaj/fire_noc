@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="{% static 'styles/home.css'%}">
+</head>
+
+<body>
+
+    <ul>
+        <li id="head">A.P. State Disaster Response and Fire Services Department</li>
+        <li><a href="">Logout</a></li>
+    </ul>
+    <div class="apply">
+        <div class="container">
+            <h1>Your Applications</h1>
+            <div class="upload-container">
+                <div class="border-container">
+
+                    <img src="{%static 'images/sad.png'%}" height="80px" width="80px" alt="">
+                    <p>No Applications Found ! </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Apply Now</h1>
+        <div class="upload-container">
+            <div class="border-apply">
+                <form action="">
+                    <label for="cats" style="font-size: 20px;">Category:</label>
+                    <select name="cats" id="cats"
+                        style="width: 170px; height: 35px;border-radius: 8px;background-color: #38d39f;font-size: 15px;margin: 5px;">
+                        <option value="volvo">Education</option>
+                        <option value="saab">Industry</option>
+                        <option value="opel">Hotels</option>
+                        <option value="audi">Govt Buildings</option>
+                    </select>
+                    <button
+                        style=" position: relative; left: 16em;background-color: #38d39f; border-radius: 5px; width: 150px; height: 35px; border: 1px black solid;font-size: 20px;">Apply
+                        Now</button>
+                    <br><br>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

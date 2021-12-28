@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" href="{% static 'styles/register.css'%}">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="title">
+      Register Here
+    </div>
+    <form  method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="form">
+        <div class="input_field" >
+          <input type="text" name="mobile" placeholder="Email Address" class="input">
+          <i class="fas fa-user"></i>
+        </div>
+
+        <div class="input_field">
+          <input type="password" placeholder="Password" name="pass" class="input">
+          <i class="fas fa-lock"></i>
+        </div>
+        <!-- <div class="input_field">
+          <input type="password" placeholder="Confirm Password" name="cpass" class="input">
+          <i class="fas fa-lock"></i>
+        </div> -->
+        <div class="input_field">
+          <input type="text" name="address" placeholder="Address" class="input">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Phone Number" name="phone" class="input">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Aadhar Number" name="aadhar" class="input">
+          <i class="fas fa-address-book"></i>
+        </div>
+        
+        <input type="submit" class="btn" value="Register">
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>
