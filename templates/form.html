@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/form.css'%}">
+    <title>Document</title>
+    <script type="text/javascript">
+        function open_file(){
+            document.getElementById('id_docfile').click();
+        }
+      </script>
+</head>
+<body>
+    <ul>
+        <li id="head">A.P. State Disaster Response and Fire Services Department</li>
+        <li><a href="login">Logout</a></li>
+    </ul>
+    <div class="wrapper">
+    <div class="container">
+        <h1>Download Form</h1>
+        <div class="upload-container">
+            
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <a href="download"><button
+                style=" position: relative; background-color: #38d39f; border-radius: 5px; width: 150px; height: 35px; border: 1px black solid;font-size: 20px;">Download
+                Now</button></a>
+        
+        </div>
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="container">
+            <h1>Upload a file</h1>
+            <div class="upload-container">
+                <div class="border-container">
+                    <div class="icons fa-4x">
+                        <i class="fas fa-file-image" data-fa-transform="shrink-3 down-2 left-6 rotate--45"></i>
+                        <i class="fas fa-file-alt" data-fa-transform="shrink-2 up-4"></i>
+                        <i class="fas fa-file-pdf" data-fa-transform="shrink-3 down-2 right-6 rotate-45"></i>
+                    </div>
+                    <!-- <input type="file" id="file-upload"> -->
+
+                    <!-- <p>Drag and drop files here, or -->
+                        <!-- <input type="file" name="input_file" id='input_file' hidden>
+                        <button onclick="open_file()"type="submit"><a href="upload"></a>browse</button> your computer. -->
+                        <form action="upload" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <input type="file" name="docfile" id="id_docfile" />
+                        <a href="upload"><button type="submit" >Upload</button></a>
+                    </form>
+                    
+                    
+                <!--</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

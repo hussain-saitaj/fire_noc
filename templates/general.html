@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.menu{
+  padding: 10px;
+}
+
+.center{
+  padding: 19px;
+  width: 400px;
+  background: #3F3D56;
+}
+.center h1{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+  border-width: 40%;
+  color: white;
+}
+.center form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+}
+.txt_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+.txt_field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #38d39f;
+  transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  top: -5px;
+  color: #38d39f;
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+  width: 100%;
+}
+.pass{
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+.pass:hover{
+  text-decoration: underline;
+}
+input[type="submit"]{
+  width: 100%;
+  height: 50px;
+  border: 1px solid #3F3D56;
+  background: #38d39f;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 10px;
+}
+input[type="submit"]:hover{
+  border-color: #38d39f;
+  transition: .3s;
+}
+
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+.left{
+  padding: 10px;
+
+}
+.left h3{
+  padding: 20px;
+  margin: 10px;
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #3F3D56;
+  border: 2px dashed #3F3D56;
+}
+.info{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width:80%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #38d39f;
+  
+}
+li{
+    display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+li a{
+    text-decoration: none;
+    float: right;
+    color: black;
+    font-size: 1.2em;
+}
+#head{
+    float: left;
+    font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+
+  <ul>
+    <li id="head">A.P. State Disaster Response and Fire Services Department</li>
+    <li><a href="login">Logout</a></li>
+</ul>
+<div class="row">
+  <div class="col-6 left">
+    <img src="{% static 'images/GeneralInfo.svg'%}" alter="Information image" class="info"><br>
+    <h3>This is the first step of your application. Enter all the required general information and make sure to enter the area of the building in square meter.</h3>
+  </div>
+ 
+    <div class="col-6 center">
+      <h1>General Information</h1>
+      <form method="post">
+        {%csrf_token%}
+        <div class="txt_field">
+          <input type="text" name="name" required>
+          <span></span>
+          <label>Name</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="phno" required>
+          <span></span>
+          <label>Phone No.</label>
+        </div>
+        <div class="txt_field">
+          <input type="email" name="email" required>
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="aadhar" required>
+          <span></span>
+          <label>Aadhar No.</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="site" required>
+          <span></span>
+          <label>Site Name</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="area" required>
+          <span></span>
+          <label>Area(in sq.m)</label>
+        </div>
+        <a href="upload"><input type="submit" name="submit" value="Next"></a>
+      </form>
+    </div>
+</div>
+
+</body>
+</html>

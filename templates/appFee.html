@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  {%load static%}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.center{
+  padding: 20px;
+  background: #3F3D56;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+}
+.center::before,
+.center::after{
+  content:"";
+}
+.payBox{
+   justify-self: center;
+  align-self: center
+}
+.payBox h3{
+  padding: 12px 5px;
+  border-bottom: 2px dashed #ababab;
+}
+.payBox p{
+  font-size: 14px;
+  padding: 12px 5px;
+  border-bottom: 2px dashed #ababab;
+}
+.center h1{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+  border-width: 40%;
+  color: white;
+}
+.center form{
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+
+button{
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #3F3D56;
+  background: #38d39f;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:hover{
+  border-color: #38d39f;
+  transition: .3s;
+}
+.ack{
+ background-color: azure; 
+ padding: 12px 5px;
+ 
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+@media only screen and (max-width: 768px){
+  .center{
+    height: auto;
+  }
+}
+.left{
+  padding: 10px;
+
+
+}
+.left h3{
+  padding: 20px;
+  margin: 25px;
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #3F3D56;
+  border: 2px dashed #ababab;
+}
+.info{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width:80%;
+}
+.navigate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigate button{
+  margin: 5px;
+  height: 14px;
+  font-size: 14px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #38d39f;
+  
+}
+li{
+    display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+li a{
+    text-decoration: none;
+    float: right;
+    color: black;
+    font-size: 1.2em;
+}
+#head{
+  float: left;
+  font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+
+  <ul>
+    <li id="head">A.P. State Disaster Response and Fire Services Department</li>
+    <li><a href="login">Logout</a></li>
+</ul>
+{% if uploaded_file_url %}
+  <marquee><p class="ack">File Name: {{ uploaded_file_url }} is uploaded Successfully:</a></p></marquee>
+{% endif %}
+<div class="row">
+  <div class="col-6 left">
+    <h3>This is the <span style="background-color: #38d39f; padding: 3px;">Third step</span> of your application. To apply for NOC, you'll be charged Rs. 800/- as application fee. You are provided with many transaction methods. Choose the one which suits you best.</h3>
+    <img src="{% static 'images/appFee.svg'%}" alter="Application Fee image" class="info"><br>
+  </div>
+ 
+    <div class="col-6 center">
+        <div class="row">
+          <div class="col-3">
+            
+          </div>
+          <div class="col-6 payBox">
+            <form method="post">
+              <h3>{%user.name%}</h3>
+              <p>Application Fee: <strong>₹800</strong></p>
+              <button type="submit" name="submit" value="Next">Pay now</button>
+            </form>
+            
+            <div class="navigate col-12">
+              <button class="col-4">Previous</button>
+              <button class="col-4" id="nextBtn">Next</button>
+            </div>
+          </div>
+           <div class="col-3">
+            
+          </div>
+        </div>
+        
+      
+      
+    </div>
+</div>
+
+</body>
+</html>
