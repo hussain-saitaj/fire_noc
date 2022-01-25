@@ -23,7 +23,10 @@
   float: left;
   padding: 15px;
 }
-
+ a{
+   text-decoration: none;
+   color: white;
+ }
 .center{
   padding: 20px;
   background: #3F3D56;
@@ -193,14 +196,15 @@ li a{
           </div>
           <div class="col-6 payBox">
             <form method="post">
-              <h3>{%user.name%}</h3>
+              {%csrf_token%}
+              <h3>Venkat Charan Boddu</h3>
               <p>Application Fee: <strong>₹800</strong></p>
-              <button type="submit" name="submit" value="Next">Pay now</button>
+              <button type="submit" name="submit" >Pay now</button>
             </form>
             
             <div class="navigate col-12">
               <button class="col-4">Previous</button>
-              <button class="col-4" id="nextBtn">Next</button>
+              <button class="col-4" id="nextBtn"><a href="payment">Next</a></button>
             </div>
           </div>
            <div class="col-3">

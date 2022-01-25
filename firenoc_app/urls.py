@@ -9,4 +9,5 @@ urlpatterns = [
     path('general',views.general,name="general"),
     path('upload',views.upload,name="file_upload"),
     path('download',views.download,name="download"),
+    path('payment',views.AppPayment,name="payment"),
 ]
