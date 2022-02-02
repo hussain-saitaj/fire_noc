@@ -99,14 +99,14 @@
                 <li>
                     <i class='bx bxs-check-circle' style="background-color: rgb(158, 224, 158);"></i>
                     <span class="text">
-                        <h3>1020</h3>
+                        <h3>0</h3>
                         <p>Applications approved</p>
                     </span>
                 </li>
                 <li>
                     <i class='bx bxs-group'></i>
                     <span class="text">
-                        <h3>45</h3>
+                        <h3>{{ applications_list.count }}</h3>
                         <p>Applications Pending</p>
                     </span>
                 </li>
@@ -130,15 +130,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {%  for application in applications_list %}
                             <tr>
                                 <td>
                                     <img src="{% static 'images/people.png'%}">
-                                    <p>Hussain</p>
+                                    <p>{{application.name}}</p>
                                 </td>
-                                <td>01-12-2021</td>
-                                <td><span class="status completed">Completed</span></td>
+                                <td>{{application.id}}</td>
+                                <td><span class="status completed">{{application.status}}</span></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td>
                                     <img src="{% static 'images/people.png'%}">
                                     <p>Afrose</p>
@@ -169,7 +170,8 @@
                                 </td>
                                 <td>01-10-2021</td>
                                 <td><span class="status completed">Completed</span></td>
-                            </tr>
+                            </tr> -->
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
