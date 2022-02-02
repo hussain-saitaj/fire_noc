@@ -10,7 +10,8 @@ import os
 import mimetypes
 
 # Create your views here.
-
+def home(request):
+    return render(request,'home.html')
 def login(request):
     if request.method=='POST':
         username = request.POST['username']
@@ -19,10 +20,14 @@ def login(request):
         if user is not None:
             if user.is_staff:
                 auth.login(request, user)
-                return render(request,'admin.html')
+                applications_list=Application.objects.filter(payment_status=1)
+                return render(request,'admin.html',{'applications_list':applications_list})
             else:
                 auth.login(request,user)
-                return render(request,'home.html')
+                custom_user=CustomUser.objects.get(user=user)
+                applications_list=custom_user.application.all().order_by('-id')
+
+                return render(request,'home.html',{'list':applications_list})
                 
     else:
         return render(request,'index.html')
@@ -88,8 +93,10 @@ def upload(request):
         recent_application=custom_user.application.all().order_by('-id')[0]
         recent_application.form=file
         recent_application.save()
-        return render(request, 'appFee.html', {
-            'uploaded_file_url': recent_application.form.url
+        file_url_list=recent_application.form.url.split('/')
+
+        return render(request, 'payment.html', {
+            'uploaded_file_url': file_url_list[-1]
         })
       
     return render(request, 'form.html')
@@ -100,7 +107,7 @@ def download(request):
     # Define Django project base directory
     #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     # Define text file name
-    filename = 'front.pdf'
+    filename = 'Industry.docx'
     # Define the full file path
     value=os.path.join(str(settings.BASE_DIR), "templates/")
     filepath =  value+ filename
@@ -117,5 +124,5 @@ def download(request):
 
 def AppPayment(request):
     
-    return render(request,"areaFee.html")
+    return render(request,"payment.html")
     
